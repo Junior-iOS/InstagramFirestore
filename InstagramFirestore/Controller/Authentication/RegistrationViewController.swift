@@ -86,10 +86,13 @@ class RegistrationViewController: UIViewController {
         userNameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
-    // MARK: - Actions
+    // MARK: - Actions 9wRQL1Uh5@#%p%WJ
     
     @objc func didTapAddPhotoButton() {
-        
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
     }
     
     @objc func handleAlreadyHaveAccount() {
@@ -111,6 +114,7 @@ class RegistrationViewController: UIViewController {
     }
 }
 
+// MARK: - FormViewModel
 extension RegistrationViewController: FormViewModel {
     func updateForm() {
         signUpButton.backgroundColor = viewModel.buttonBackgroundColor
@@ -118,3 +122,20 @@ extension RegistrationViewController: FormViewModel {
         signUpButton.isEnabled = viewModel.formIsValid
     }
 }
+
+// MARK: - UIImagePickerControllerDelegate
+extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.white.cgColor
+        plusPhotoButton.layer.borderWidth = 2
+        plusPhotoButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+

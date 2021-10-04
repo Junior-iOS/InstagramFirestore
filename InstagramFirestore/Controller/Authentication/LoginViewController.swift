@@ -31,14 +31,8 @@ class LoginViewController: UIViewController {
     }()
     
     private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Log in", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
-        button.layer.cornerRadius = 5
+        let button = AuthenticationButton(title: "Log in")
         button.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-        button.setHeight(50)
         return button
     }()
     
@@ -51,6 +45,7 @@ class LoginViewController: UIViewController {
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Don't have an account?", secondPart: "Sign Up")
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
 
@@ -61,15 +56,9 @@ class LoginViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = .white
+        configureGradientLayer()
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-        
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
         
         view.addSubview(iconImage)
         iconImage.centerX(inView: view)
@@ -89,8 +78,15 @@ class LoginViewController: UIViewController {
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
     
+    // MARK: - Actions
+    
     @objc func didTapLoginButton() {
         print("Tapped")
+    }
+    
+    @objc func handleShowSignUp() {
+        let controller = RegistrationViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
 }

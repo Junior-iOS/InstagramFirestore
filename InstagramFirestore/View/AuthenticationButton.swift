@@ -15,9 +15,10 @@ class AuthenticationButton: UIButton {
         
         setTitle(title, for: .normal)
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        setTitleColor(.white, for: .normal)
-        backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        setTitleColor(.gray, for: .normal)
+        backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
         layer.cornerRadius = 5
+        isEnabled = false
         setHeight(50)
     }
     

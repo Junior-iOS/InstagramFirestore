@@ -99,6 +99,8 @@ class RegistrationViewController: UIViewController {
     }
     
     @objc private func handleSignUp() {
+        activityIndicator.startAnimating()
+        
         guard let email = emailTextField.text?.lowercased(),
               let password = passwordTextField.text,
               let fullName = fullNameTextField.text,
@@ -117,7 +119,9 @@ class RegistrationViewController: UIViewController {
                 return
             }
             
-            print("Successfully registered user with firestore")
+            self.dismiss(animated: true) {
+                self.activityIndicator.stopAnimating()
+            }
             
         }
     }

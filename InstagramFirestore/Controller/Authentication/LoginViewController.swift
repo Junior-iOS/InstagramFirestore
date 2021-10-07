@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let textField = CustomTextField(placeholder: "Password")
         textField.keyboardType = .emailAddress
-        textField.isSecureTextEntry = true
+        //textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -90,7 +90,16 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @objc func didTapLoginButton() {
-        print("Tapped")
+        guard let email = emailTextField.text?.lowercased(), let password = passwordTextField.text else { return }
+        
+        AuthService.logUserIn(with: email, password: password) { result, error in
+            if let error = error {
+                print("❌ Failed to log user in: \(error.localizedDescription)")
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func handleShowSignUp() {

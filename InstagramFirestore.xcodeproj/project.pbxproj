@@ -24,7 +24,6 @@
 		14BD9E43270E8A6E00D8C773 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD9E42270E8A6E00D8C773 /* AuthService.swift */; };
 		14C9D976270A1C4E0056B91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C9D975270A1C4E0056B91B /* AppDelegate.swift */; };
 		14C9D978270A1C4E0056B91B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C9D977270A1C4E0056B91B /* SceneDelegate.swift */; };
-		14C9D97A270A1C4E0056B91B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C9D979270A1C4E0056B91B /* ViewController.swift */; };
 		14C9D97D270A1C4E0056B91B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14C9D97B270A1C4E0056B91B /* Main.storyboard */; };
 		14C9D97F270A1C510056B91B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14C9D97E270A1C510056B91B /* Assets.xcassets */; };
 		14C9D982270A1C510056B91B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14C9D980270A1C510056B91B /* LaunchScreen.storyboard */; };
@@ -52,7 +51,6 @@
 		14C9D972270A1C4E0056B91B /* InstagramFirestore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFirestore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C9D975270A1C4E0056B91B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14C9D977270A1C4E0056B91B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		14C9D979270A1C4E0056B91B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		14C9D97C270A1C4E0056B91B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14C9D97E270A1C510056B91B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14C9D981270A1C510056B91B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				14C9D98C270A1CE90056B91B /* Controller */,
 				14C9D98A270A1CE20056B91B /* API */,
 				14C9D989270A1C6A0056B91B /* Utils */,
-				14C9D979270A1C4E0056B91B /* ViewController.swift */,
 				14C9D97B270A1C4E0056B91B /* Main.storyboard */,
 				14C9D97E270A1C510056B91B /* Assets.xcassets */,
 				14C9D980270A1C510056B91B /* LaunchScreen.storyboard */,
@@ -326,7 +323,6 @@
 				146F475F270A1F610053B071 /* SearchViewController.swift in Sources */,
 				146F4774270AA2F50053B071 /* AuthenticationViewModel.swift in Sources */,
 				146F4767270A35890053B071 /* FeedCell.swift in Sources */,
-				14C9D97A270A1C4E0056B91B /* ViewController.swift in Sources */,
 				146F476E270A44D70053B071 /* RegistrationViewController.swift in Sources */,
 				14C9D976270A1C4E0056B91B /* AppDelegate.swift in Sources */,
 				146F475D270A1F510053B071 /* FeedViewController.swift in Sources */,

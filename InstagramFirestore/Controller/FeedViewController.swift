@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedViewController: UICollectionViewController {
     
     private let reuseIdentifier = "Cell"
-
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureUI()
     }
     
@@ -22,8 +23,22 @@ class FeedViewController: UICollectionViewController {
     private func configureUI() {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.title = "Feed"
     }
-
+    
+    @objc private func handleLogout() {
+        do {
+            try Auth.auth().signOut()
+            let controller = LoginViewController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        } catch {
+            print("❌ Failed to sign out")
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource

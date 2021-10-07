@@ -11,6 +11,14 @@ class RegistrationViewController: UIViewController {
 
     // MARK: - Properties
     private var viewModel = RegistrationViewModel()
+    private var profileImage: UIImage?
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView()
+        activity.hidesWhenStopped = true
+        activity.style = .large
+        return activity
+    }()
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -38,6 +46,7 @@ class RegistrationViewController: UIViewController {
     
     private let signUpButton: UIButton = {
         let button = AuthenticationButton(title: "Sign Up")
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -77,16 +86,43 @@ class RegistrationViewController: UIViewController {
         view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.centerX(inView: view)
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.center(inView: view)
     }
     
-    func configureNotificationObservers() {
+    private func configureNotificationObservers() {
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         fullNameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         userNameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
-    // MARK: - Actions 9wRQL1Uh5@#%p%WJ
+    @objc private func handleSignUp() {
+        guard let email = emailTextField.text?.lowercased(),
+              let password = passwordTextField.text,
+              let fullName = fullNameTextField.text,
+              let userName = userNameTextField.text?.lowercased()
+        else { return }
+        
+        let credentials =  AuthCredentials(email: email,
+                                           password: password,
+                                           fullName: fullName,
+                                           userName: userName,
+                                           profileImage: profileImage ?? UIImage())
+        
+        AuthService.registerUser(with: credentials) { error in
+            if let error = error {
+                print("❌ Failed to register user: \(error.localizedDescription)")
+                return
+            }
+            
+            print("Successfully registered user with firestore")
+            
+        }
+    }
+    
+    // MARK: - Actions
     
     @objc func didTapAddPhotoButton() {
         let picker = UIImagePickerController()
@@ -128,6 +164,8 @@ extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        profileImage = selectedImage
+        
         plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
         plusPhotoButton.layer.masksToBounds = true
         plusPhotoButton.layer.borderColor = UIColor.white.cgColor

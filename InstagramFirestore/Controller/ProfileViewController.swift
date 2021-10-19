@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ProfileViewController: UICollectionViewController {
 
@@ -19,6 +20,7 @@ class ProfileViewController: UICollectionViewController {
 
         navigationItem.title = "Profile"
         configureCollectionView()
+        fetchUser()
     }
     
     // MARK: - Helpers
@@ -26,6 +28,11 @@ class ProfileViewController: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.register(ProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+    }
+    
+    // MARK: - API
+    private func fetchUser() {
+        UserService.fetchUser()
     }
 
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143E8F522710ACA300909380 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E8F512710ACA300909380 /* ProfileCell.swift */; };
+		143E8F542710ACB200909380 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E8F532710ACB200909380 /* ProfileHeader.swift */; };
 		146F475D270A1F510053B071 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F475C270A1F510053B071 /* FeedViewController.swift */; };
 		146F475F270A1F610053B071 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F475E270A1F610053B071 /* SearchViewController.swift */; };
 		146F4761270A1F6E0053B071 /* ImageSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F4760270A1F6E0053B071 /* ImageSelectorViewController.swift */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		1268AF13FCC0ED0647675CFE /* Pods-InstagramFirestore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramFirestore.release.xcconfig"; path = "Target Support Files/Pods-InstagramFirestore/Pods-InstagramFirestore.release.xcconfig"; sourceTree = "<group>"; };
+		143E8F512710ACA300909380 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		143E8F532710ACB200909380 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		146F475C270A1F510053B071 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		146F475E270A1F610053B071 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		146F4760270A1F6E0053B071 /* ImageSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +82,15 @@
 				6F3919812D43DC1A1DA9134B /* Pods_InstagramFirestore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		143E8F502710AC8100909380 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				143E8F532710ACB200909380 /* ProfileHeader.swift */,
+				143E8F512710ACA300909380 /* ProfileCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		146F475B270A1EF90053B071 /* Application */ = {
@@ -177,6 +190,7 @@
 		14C9D98E270A1CED0056B91B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				143E8F502710AC8100909380 /* Profile */,
 				146F4766270A35890053B071 /* FeedCell.swift */,
 				146F476F270A4FB80053B071 /* CustomTextField.swift */,
 				146F4771270A5A310053B071 /* AuthenticationButton.swift */,
@@ -316,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				146F4770270A4FB80053B071 /* CustomTextField.swift in Sources */,
+				143E8F542710ACB200909380 /* ProfileHeader.swift in Sources */,
 				146F476C270A44C00053B071 /* LoginViewController.swift in Sources */,
 				14BD9E41270E8A6300D8C773 /* ImageUploader.swift in Sources */,
 				14BD9E43270E8A6E00D8C773 /* AuthService.swift in Sources */,
@@ -330,6 +345,7 @@
 				14C9D991270A1D650056B91B /* MainTabController.swift in Sources */,
 				146F4765270A1F960053B071 /* ProfileViewController.swift in Sources */,
 				14C9D978270A1C4E0056B91B /* SceneDelegate.swift in Sources */,
+				143E8F522710ACA300909380 /* ProfileCell.swift in Sources */,
 				146F4769270A37B00053B071 /* Extensions.swift in Sources */,
 				146F4763270A1F7A0053B071 /* NotificationViewController.swift in Sources */,
 			);
@@ -482,6 +498,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XE5D529J6R;
 				INFOPLIST_FILE = InstagramFirestore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,6 +519,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XE5D529J6R;
 				INFOPLIST_FILE = InstagramFirestore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

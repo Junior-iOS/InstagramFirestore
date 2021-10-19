@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let textField = CustomTextField(placeholder: "Password")
         textField.keyboardType = .emailAddress
-        //textField.isSecureTextEntry = true
+        textField.isSecureTextEntry = true
         return textField
     }()
     

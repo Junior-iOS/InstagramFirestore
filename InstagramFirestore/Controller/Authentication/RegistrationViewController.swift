@@ -12,6 +12,7 @@ class RegistrationViewController: UIViewController {
     // MARK: - Properties
     private var viewModel = RegistrationViewModel()
     private var profileImage: UIImage?
+    weak var delegate: AuthenticationDelegate?
     
     private let activityIndicator: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
@@ -36,7 +37,7 @@ class RegistrationViewController: UIViewController {
     
     private let passwordTextField: UITextField = {
         let textField = CustomTextField(placeholder: "Password")
-        textField.keyboardType = .emailAddress
+        textField.keyboardType = .default
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -115,14 +116,11 @@ class RegistrationViewController: UIViewController {
         
         AuthService.registerUser(with: credentials) { error in
             if let error = error {
-                print("❌ Failed to register user: \(error.localizedDescription)")
+                AlertController.shared.showAlert(title: "❌ Failed to register user", message: "\(error.localizedDescription)", viewController: self)
                 return
             }
             
-            self.dismiss(animated: true) {
-                self.activityIndicator.stopAnimating()
-            }
-            
+            self.delegate?.authenticationDidComplete()
         }
     }
     

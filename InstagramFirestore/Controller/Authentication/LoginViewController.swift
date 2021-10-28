@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol AuthenticationDelegate: AnyObject {
+    func authenticationDidComplete()
+}
+
 class LoginViewController: UIViewController {
     
     // MARK: - Properties
     
     private var viewModel = LoginViewModel()
+    weak var delegate: AuthenticationDelegate?
     
     private let iconImage: UIImageView = {
         let image = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
@@ -27,7 +32,7 @@ class LoginViewController: UIViewController {
     
     private let passwordTextField: UITextField = {
         let textField = CustomTextField(placeholder: "Password")
-        textField.keyboardType = .emailAddress
+        textField.keyboardType = .default
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -90,20 +95,21 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @objc func didTapLoginButton() {
-        guard let email = emailTextField.text?.lowercased(), let password = passwordTextField.text else { return }
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         
         AuthService.logUserIn(with: email, password: password) { result, error in
             if let error = error {
-                print("❌ Failed to log user in: \(error.localizedDescription)")
+                AlertController.shared.showAlert(title: "❌ Failed to log user in", message: "\(error.localizedDescription)", viewController: self)
                 return
             }
             
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationDidComplete()
         }
     }
     
     @objc func handleShowSignUp() {
         let controller = RegistrationViewController()
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
     

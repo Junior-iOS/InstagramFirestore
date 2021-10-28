@@ -32,6 +32,7 @@ class FeedViewController: UICollectionViewController {
         do {
             try Auth.auth().signOut()
             let controller = LoginViewController()
+            controller.delegate = self.tabBarController as? MainTabController
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)

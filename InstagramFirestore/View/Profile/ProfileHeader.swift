@@ -19,10 +19,18 @@ class ProfileHeader: UICollectionReusableView {
         }
     }
     
+//    private let profileImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.backgroundColor = .lightGray
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.clipsToBounds = true
+//        return imageView
+//    }()
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .lightGray
-        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "venom-7")
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         return imageView
     }()

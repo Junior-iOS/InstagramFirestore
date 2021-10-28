@@ -132,7 +132,7 @@ class ProfileHeader: UICollectionReusableView {
         nameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 12)
         
         addSubview(editProfileButton)
-        editProfileButton.anchor(top: nameLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 24, paddingRight: 24)
+        editProfileButton.anchor(top: nameLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 24, paddingRight: 24) 
         
         addSubview(labelStackView)
         labelStackView.centerY(inView: profileImageView)

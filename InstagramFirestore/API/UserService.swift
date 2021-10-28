@@ -9,10 +9,12 @@ import Foundation
 import Firebase
 
 struct UserService {
-    static func fetchUser() {
+    static func fetchUser(_ completion: @escaping(User) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         COLLECTION_USERS.document(uid).getDocument { snapshot, error in
-            print("Snapshot: ", snapshot?.data())
+            guard let dictionary = snapshot?.data() else { return }
+            let user = User(dictionary: dictionary)
+            completion(user)
         }
     }
 }

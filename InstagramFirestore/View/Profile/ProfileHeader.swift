@@ -7,13 +7,21 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Properties
+    
+    var viewModel: ProfileHeaderViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "venom-7")
+        imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -21,7 +29,6 @@ class ProfileHeader: UICollectionReusableView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Eddie Brock"
         label.font = .systemFont(ofSize: 14, weight: .medium)
         return label
     }()
@@ -138,6 +145,14 @@ class ProfileHeader: UICollectionReusableView {
         addSubview(bottomDivider)
         bottomDivider.anchor(top: buttonsStackView.bottomAnchor, left: leftAnchor, right: rightAnchor, height: 0.5)
         
+    }
+    
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        DispatchQueue.main.async {
+            self.nameLabel.text = viewModel.fullName
+            self.profileImageView.sd_setImage(with: viewModel.profileImage)
+        }
     }
         
     // MARK: - Actions

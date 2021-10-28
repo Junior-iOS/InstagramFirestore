@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/juniorsilva/Projetos iOS/InstagramFirestore/InstagramFirestore/ViewModel/ProfileHeaderViewModel.swift">
+   </FileRef>
+   <FileRef
       location = "group:InstagramFirestore.xcodeproj">
    </FileRef>
    <FileRef

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140671A82728B0F40059D83E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140671A72728B0F40059D83E /* User.swift */; };
 		143E8F522710ACA300909380 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E8F512710ACA300909380 /* ProfileCell.swift */; };
 		143E8F542710ACB200909380 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E8F532710ACB200909380 /* ProfileHeader.swift */; };
 		146F475D270A1F510053B071 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F475C270A1F510053B071 /* FeedViewController.swift */; };
@@ -24,6 +25,7 @@
 		146F4776270AB8990053B071 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 146F4775270AB8990053B071 /* GoogleService-Info.plist */; };
 		148297E5271E9AF400E7EC96 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148297E4271E9AF400E7EC96 /* UserService.swift */; };
 		148297E7271E9B2900E7EC96 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148297E6271E9B2900E7EC96 /* Constants.swift */; };
+		14BBB504272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BBB503272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift */; };
 		14BD9E41270E8A6300D8C773 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD9E40270E8A6300D8C773 /* ImageUploader.swift */; };
 		14BD9E43270E8A6E00D8C773 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD9E42270E8A6E00D8C773 /* AuthService.swift */; };
 		14C9D976270A1C4E0056B91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C9D975270A1C4E0056B91B /* AppDelegate.swift */; };
@@ -37,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		1268AF13FCC0ED0647675CFE /* Pods-InstagramFirestore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramFirestore.release.xcconfig"; path = "Target Support Files/Pods-InstagramFirestore/Pods-InstagramFirestore.release.xcconfig"; sourceTree = "<group>"; };
+		140671A72728B0F40059D83E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		143E8F512710ACA300909380 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		143E8F532710ACB200909380 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		146F475C270A1F510053B071 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		146F4775270AB8990053B071 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		148297E4271E9AF400E7EC96 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		148297E6271E9B2900E7EC96 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		14BBB503272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileHeaderViewModel.swift; path = "/Users/juniorsilva/Projetos iOS/InstagramFirestore/InstagramFirestore/ViewModel/ProfileHeaderViewModel.swift"; sourceTree = "<absolute>"; };
 		14BD9E40270E8A6300D8C773 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		14BD9E42270E8A6E00D8C773 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		14C9D972270A1C4E0056B91B /* InstagramFirestore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFirestore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				146F4773270AA2F50053B071 /* AuthenticationViewModel.swift */,
+				14BBB503272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 		14C9D98F270A1CEF0056B91B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				140671A72728B0F40059D83E /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,7 +351,9 @@
 				146F4774270AA2F50053B071 /* AuthenticationViewModel.swift in Sources */,
 				146F4767270A35890053B071 /* FeedCell.swift in Sources */,
 				146F476E270A44D70053B071 /* RegistrationViewController.swift in Sources */,
+				140671A82728B0F40059D83E /* User.swift in Sources */,
 				14C9D976270A1C4E0056B91B /* AppDelegate.swift in Sources */,
+				14BBB504272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift in Sources */,
 				148297E7271E9B2900E7EC96 /* Constants.swift in Sources */,
 				146F475D270A1F510053B071 /* FeedViewController.swift in Sources */,
 				146F4761270A1F6E0053B071 /* ImageSelectorViewController.swift in Sources */,

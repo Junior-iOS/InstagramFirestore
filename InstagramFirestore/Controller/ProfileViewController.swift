@@ -48,17 +48,19 @@ extension ProfileViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ProfileCell else { return UICollectionViewCell() }
+        cell.viewModel = ProfileViewModel(user: user)
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ProfileHeader else { return UICollectionReusableView() }
-        
+        header.delegate = self
         header.viewModel = ProfileHeaderViewModel(user: user)
         return header
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     // MARK: - SPACES BETWEEN CELLS AND BETWEEN ROWS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -76,5 +78,21 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 240)
+    }
+}
+
+
+// MARK: - PROFILE HEADER DELEGATE
+extension ProfileViewController: ProfileHeaderDelegate {
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User) {
+        if user.isCurrentUser {
+            print("Show Profile")
+        } else if user.isFollowed {
+            print("Unfollow here")
+        } else {
+            UserService.follow(uid: user.uid) { _ in
+                print("Did Follow user")
+            }
+        }
     }
 }

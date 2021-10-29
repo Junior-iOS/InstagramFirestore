@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 import SDWebImage
 
+protocol ProfileHeaderDelegate: AnyObject {
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User)
+}
+
 class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Properties
@@ -19,13 +23,7 @@ class ProfileHeader: UICollectionReusableView {
         }
     }
     
-//    private let profileImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.backgroundColor = .lightGray
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.clipsToBounds = true
-//        return imageView
-//    }()
+    weak var delegate: ProfileHeaderDelegate?
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -120,6 +118,8 @@ class ProfileHeader: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: - FUNCTIONS
     private func setupView() {
         backgroundColor = .white
         
@@ -160,12 +160,16 @@ class ProfileHeader: UICollectionReusableView {
         DispatchQueue.main.async {
             self.nameLabel.text = viewModel.fullName
             self.profileImageView.sd_setImage(with: viewModel.profileImage)
+            self.editProfileButton.setTitle(viewModel.followButtonText, for: .normal)
+            self.editProfileButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
+            self.editProfileButton.backgroundColor = viewModel.followButtonBackgroundColor
         }
     }
         
     // MARK: - Actions
     @objc func handleEditProfileButtonTapped() {
-        print("handleEditProfileButtonTapped")
+        guard let viewModel = viewModel else { return }
+        delegate?.header(self, didTapActionButtonFor: viewModel.user)
     }
     
     // MARK: - Helpers

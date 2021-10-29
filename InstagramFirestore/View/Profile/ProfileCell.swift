@@ -18,6 +18,12 @@ class ProfileCell: UICollectionViewCell {
         return imageView
     }()
     
+    var viewModel: ProfileViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .lightGray
@@ -28,6 +34,13 @@ class ProfileCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        DispatchQueue.main.async {
+            self.imageView.sd_setImage(with: viewModel.profileImage)
+        }
     }
     
 }

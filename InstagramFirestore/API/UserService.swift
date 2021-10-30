@@ -42,4 +42,25 @@ struct UserService {
             COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUID).delete(completion: completion)
         }
     }
+    
+    static func checkIfUserIsFollowed(uid: String, completion: @escaping (Bool) -> Void) {
+        guard let currentUID = Auth.auth().currentUser?.uid else { return }
+        
+        COLLECTION_FOLLOWING.document(currentUID).collection("user-following").document(uid).getDocument { snapshot, _ in
+            guard let isFollowed = snapshot?.exists else { return }
+            completion(isFollowed)
+        }
+    }
+    
+    static func fetchUserStats(uid: String, completion: @escaping (UserStats) -> Void) {
+        COLLECTION_FOLLOWERS.document(uid).collection("user-followers").getDocuments { snapshot, _ in
+            let followers = snapshot?.documents.count ?? 0
+            
+            COLLECTION_FOLLOWING.document(uid).collection("user-following").getDocuments { snapshot, _ in
+                let following = snapshot?.documents.count ?? 0
+                
+                completion(UserStats(followers: followers, following: following, posts: 0))
+            }
+        }
+    }
 }

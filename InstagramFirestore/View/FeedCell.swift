@@ -13,6 +13,12 @@ class FeedCell: UICollectionViewCell {
     private let kProfileImageSize: CGFloat = 40.0
     private var stackView = UIStackView()
     
+    var viewModel: PostViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     private let profileImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -70,7 +76,6 @@ class FeedCell: UICollectionViewCell {
     
     private let captionsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Some test caption for now..."
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -116,6 +121,7 @@ class FeedCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helpers
     private func configureActionbuttons() {
         stackView = UIStackView(arrangedSubviews: [likeButton, commentButton, shareButton])
         stackView.axis = .horizontal
@@ -127,5 +133,13 @@ class FeedCell: UICollectionViewCell {
     
     @objc func didTapUsername() {
         
+    }
+    
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        captionsLabel.text = viewModel.caption
+        postImageView.sd_setImage(with: viewModel.imageUrl)
+        likesLabel.text = viewModel.likes == 1 ? "\(viewModel.likes) like" : "\(viewModel.likes) likes"
     }
 }

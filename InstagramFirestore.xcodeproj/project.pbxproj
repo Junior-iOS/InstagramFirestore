@@ -27,6 +27,7 @@
 		148297E7271E9B2900E7EC96 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148297E6271E9B2900E7EC96 /* Constants.swift */; };
 		14960392272CCFE900E45CFA /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14960391272CCFE900E45CFA /* UploadPostViewController.swift */; };
 		14960394272D18D100E45CFA /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14960393272D18D100E45CFA /* InputTextView.swift */; };
+		14960396272F4E0700E45CFA /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14960395272F4E0700E45CFA /* PostService.swift */; };
 		14BBB504272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BBB503272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift */; };
 		14BBB506272A71E8003F3EC2 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BBB505272A71E8003F3EC2 /* AlertController.swift */; };
 		14BBB509272B356D003F3EC2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BBB508272B356D003F3EC2 /* UserCell.swift */; };
@@ -65,6 +66,7 @@
 		148297E6271E9B2900E7EC96 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		14960391272CCFE900E45CFA /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
 		14960393272D18D100E45CFA /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		14960395272F4E0700E45CFA /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		14BBB503272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileHeaderViewModel.swift; path = "/Users/juniorsilva/Projetos iOS/InstagramFirestore/InstagramFirestore/ViewModel/ProfileHeaderViewModel.swift"; sourceTree = "<absolute>"; };
 		14BBB505272A71E8003F3EC2 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		14BBB508272B356D003F3EC2 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				14BD9E40270E8A6300D8C773 /* ImageUploader.swift */,
 				14BD9E42270E8A6E00D8C773 /* AuthService.swift */,
 				148297E4271E9AF400E7EC96 /* UserService.swift */,
+				14960395272F4E0700E45CFA /* PostService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				146F4765270A1F960053B071 /* ProfileViewController.swift in Sources */,
 				14960394272D18D100E45CFA /* InputTextView.swift in Sources */,
 				14C9D978270A1C4E0056B91B /* SceneDelegate.swift in Sources */,
+				14960396272F4E0700E45CFA /* PostService.swift in Sources */,
 				148297E5271E9AF400E7EC96 /* UserService.swift in Sources */,
 				143E8F522710ACA300909380 /* ProfileCell.swift in Sources */,
 				146F4769270A37B00053B071 /* Extensions.swift in Sources */,

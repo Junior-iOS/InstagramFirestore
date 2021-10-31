@@ -25,8 +25,6 @@ struct User {
         self.profileImage = dictionary["profileImage"] as? String ?? ""
         self.userName = dictionary["userName"] as? String ?? ""
         self.uid = dictionary["uid"] as? String ?? ""
-        
-//        self.stats = UserStats(followers: 0, following: 0, posts: 0)
     }
 }
 

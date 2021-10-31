@@ -96,13 +96,15 @@ class LoginViewController: UIViewController {
     
     @objc func didTapLoginButton() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        showLoader(true)
         
         AuthService.logUserIn(with: email, password: password) { result, error in
+            self.showLoader(false)
+            
             if let error = error {
-                AlertController.shared.showAlert(title: "❌ Failed to log user in", message: "\(error.localizedDescription)", viewController: self)
+                AlertController.showAlert(title: "❌ Failed to log user in", message: "\(error.localizedDescription)", viewController: self)
                 return
             }
-            
             self.delegate?.authenticationDidComplete()
         }
     }

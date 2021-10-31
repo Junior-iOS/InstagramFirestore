@@ -14,13 +14,6 @@ class RegistrationViewController: UIViewController {
     private var profileImage: UIImage?
     weak var delegate: AuthenticationDelegate?
     
-    private let activityIndicator: UIActivityIndicatorView = {
-        let activity = UIActivityIndicatorView()
-        activity.hidesWhenStopped = true
-        activity.style = .large
-        return activity
-    }()
-    
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
@@ -87,9 +80,6 @@ class RegistrationViewController: UIViewController {
         view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.centerX(inView: view)
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
-        
-        view.addSubview(activityIndicator)
-        activityIndicator.center(inView: view)
     }
     
     private func configureNotificationObservers() {
@@ -100,7 +90,7 @@ class RegistrationViewController: UIViewController {
     }
     
     @objc private func handleSignUp() {
-        activityIndicator.startAnimating()
+        showLoader(true)
         
         guard let email = emailTextField.text?.lowercased(),
               let password = passwordTextField.text,
@@ -115,11 +105,12 @@ class RegistrationViewController: UIViewController {
                                            profileImage: profileImage ?? UIImage())
         
         AuthService.registerUser(with: credentials) { error in
+            self.showLoader(false)
+            
             if let error = error {
-                AlertController.shared.showAlert(title: "❌ Failed to register user", message: "\(error.localizedDescription)", viewController: self)
+                AlertController.showAlert(title: "❌ Failed to register user", message: "\(error.localizedDescription)", viewController: self)
                 return
             }
-            
             self.delegate?.authenticationDidComplete()
         }
     }

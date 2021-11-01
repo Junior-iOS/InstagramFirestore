@@ -25,6 +25,7 @@ class FeedViewController: UICollectionViewController {
     private func configureUI() {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(EmptyStateCell.self, forCellWithReuseIdentifier: EmptyStateCell.identifier)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         navigationItem.title = "Feed"
@@ -39,7 +40,7 @@ class FeedViewController: UICollectionViewController {
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
         } catch {
-            print("❌ Failed to sign out")
+            AlertController.showAlert(message: "❌ Failed to sign out", viewController: self)
         }
     }
     
@@ -56,13 +57,20 @@ class FeedViewController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource
 extension FeedViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
+        return posts.count > 0 ? posts.count : 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FeedCell else { return UICollectionViewCell() }
-        cell.viewModel = PostViewModel(post: posts[indexPath.row])
-        return cell
+        switch posts.count {
+        case 0:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyStateCell.identifier, for: indexPath) as? EmptyStateCell else { return UICollectionViewCell() }
+            return cell
+            
+        default:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FeedCell else { return UICollectionViewCell() }
+            cell.viewModel = PostViewModel(post: posts[indexPath.row])
+            return cell
+        }
     }
 }
 

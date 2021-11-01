@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 class FeedViewController: UICollectionViewController {
+    // MARK: - Properties
     
     private let reuseIdentifier = "Cell"
     private var posts: [Post] = []
@@ -83,6 +84,8 @@ extension FeedViewController {
         }
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FeedCell else { return UICollectionViewCell() }
+        cell.delegate = self
+        
         if let post = post {
             cell.viewModel = PostViewModel(post: post)
         } else {
@@ -99,5 +102,12 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
         height += 50
         height += 60
         return CGSize(width: view.frame.width, height: height)
+    }
+}
+
+extension FeedViewController: FeedCellDelegate {
+    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post) {
+        let controller = CommentViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

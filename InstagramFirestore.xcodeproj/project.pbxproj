@@ -31,6 +31,8 @@
 		14960398272F5D5400E45CFA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14960397272F5D5400E45CFA /* Post.swift */; };
 		1496039A272F602200E45CFA /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14960399272F602200E45CFA /* PostViewModel.swift */; };
 		1496039C272F656D00E45CFA /* EmptyStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496039B272F656D00E45CFA /* EmptyStateCell.swift */; };
+		1496039E272F988900E45CFA /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496039D272F988900E45CFA /* CommentViewController.swift */; };
+		149603A0272F99E500E45CFA /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496039F272F99E500E45CFA /* CommentsCell.swift */; };
 		14BBB504272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BBB503272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift */; };
 		14BBB506272A71E8003F3EC2 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BBB505272A71E8003F3EC2 /* AlertController.swift */; };
 		14BBB509272B356D003F3EC2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BBB508272B356D003F3EC2 /* UserCell.swift */; };
@@ -73,6 +75,8 @@
 		14960397272F5D5400E45CFA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		14960399272F602200E45CFA /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		1496039B272F656D00E45CFA /* EmptyStateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateCell.swift; sourceTree = "<group>"; };
+		1496039D272F988900E45CFA /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		1496039F272F99E500E45CFA /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		14BBB503272A5CC4003F3EC2 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileHeaderViewModel.swift; path = "/Users/juniorsilva/Projetos iOS/InstagramFirestore/InstagramFirestore/ViewModel/ProfileHeaderViewModel.swift"; sourceTree = "<absolute>"; };
 		14BBB505272A71E8003F3EC2 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		14BBB508272B356D003F3EC2 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				146F4762270A1F7A0053B071 /* NotificationViewController.swift */,
 				146F4764270A1F960053B071 /* ProfileViewController.swift */,
 				14960391272CCFE900E45CFA /* UploadPostViewController.swift */,
+				1496039D272F988900E45CFA /* CommentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				1496039B272F656D00E45CFA /* EmptyStateCell.swift */,
 				146F4766270A35890053B071 /* FeedCell.swift */,
 				14BBB508272B356D003F3EC2 /* UserCell.swift */,
+				1496039F272F99E500E45CFA /* CommentsCell.swift */,
 				146F476F270A4FB80053B071 /* CustomTextField.swift */,
 				146F4771270A5A310053B071 /* AuthenticationButton.swift */,
 			);
@@ -372,10 +378,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1496039A272F602200E45CFA /* PostViewModel.swift in Sources */,
+				1496039E272F988900E45CFA /* CommentViewController.swift in Sources */,
 				14960392272CCFE900E45CFA /* UploadPostViewController.swift in Sources */,
 				146F4770270A4FB80053B071 /* CustomTextField.swift in Sources */,
 				143E8F542710ACB200909380 /* ProfileHeader.swift in Sources */,
 				146F476C270A44C00053B071 /* LoginViewController.swift in Sources */,
+				149603A0272F99E500E45CFA /* CommentsCell.swift in Sources */,
 				14BBB50D272B61BC003F3EC2 /* ProfileViewModel.swift in Sources */,
 				14BD9E41270E8A6300D8C773 /* ImageUploader.swift in Sources */,
 				14BBB506272A71E8003F3EC2 /* AlertController.swift in Sources */,

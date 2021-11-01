@@ -16,7 +16,7 @@ struct Post {
     let timestamp: Timestamp
     let postId: String
     let ownerImageUrl: String
-    let onwerUserName: String
+    let ownerUserName: String
     
     init(postId: String, dictionary: [String: Any]) {
         self.caption = dictionary["caption"] as? String ?? ""
@@ -26,6 +26,6 @@ struct Post {
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
         self.postId = dictionary["postId"] as? String ?? ""
         self.ownerImageUrl = dictionary["ownerImageUrl"] as? String ?? ""
-        self.onwerUserName = dictionary["onwerUserName"] as? String ?? ""
+        self.ownerUserName = dictionary["ownerUserName"] as? String ?? ""
     }
 }

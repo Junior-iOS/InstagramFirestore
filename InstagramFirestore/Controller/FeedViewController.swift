@@ -14,9 +14,9 @@ class FeedViewController: UICollectionViewController {
     private var posts: [Post] = []
     
     // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureUI()
         fetchPosts()
     }

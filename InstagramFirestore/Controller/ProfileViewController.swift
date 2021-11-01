@@ -14,6 +14,7 @@ class ProfileViewController: UICollectionViewController {
     private let cellIdentifier = "ProfileCell"
     private let headerIdentifier = "ProfileHeader"
     private var user: User
+    private var posts = [Post]()
     
     // MARK: - Lifecyle
     init(user: User) {
@@ -30,6 +31,7 @@ class ProfileViewController: UICollectionViewController {
         configureCollectionView()
         checkIfUserIsFollowed()
         fetchUserStats()
+        fetchPosts()
     }
     
     // MARK: - Helpers
@@ -53,17 +55,30 @@ class ProfileViewController: UICollectionViewController {
             self.collectionView.reloadData()
         }
     }
+    
+    private func fetchPosts() {
+        PostService.fetchPosts(forUser: user.uid) { posts in
+            self.posts = posts
+            self.collectionView.reloadData()
+        }
+    }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource / UICollectionViewDelegate
 extension ProfileViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = FeedViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        controller.post = posts[indexPath.row]
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return posts.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ProfileCell else { return UICollectionViewCell() }
-        cell.viewModel = ProfileViewModel(user: user)
+        cell.viewModel = PostViewModel(post: posts[indexPath.row])
         return cell
     }
     

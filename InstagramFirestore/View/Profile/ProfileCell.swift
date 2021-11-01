@@ -18,7 +18,7 @@ class ProfileCell: UICollectionViewCell {
         return imageView
     }()
     
-    var viewModel: ProfileViewModel? {
+    var viewModel: PostViewModel? {
         didSet {
             configure()
         }
@@ -39,7 +39,7 @@ class ProfileCell: UICollectionViewCell {
     private func configure() {
         guard let viewModel = viewModel else { return }
         DispatchQueue.main.async {
-            self.imageView.sd_setImage(with: viewModel.profileImage)
+            self.imageView.sd_setImage(with: viewModel.imageUrl)
         }
     }
     

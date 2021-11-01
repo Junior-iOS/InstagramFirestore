@@ -129,7 +129,7 @@ class FeedCell: UICollectionViewCell {
     }
     
     @objc func didTapUsername() {
-        
+        print("didTapUsername")
     }
     
     private func configure() {

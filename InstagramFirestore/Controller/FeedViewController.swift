@@ -12,6 +12,7 @@ class FeedViewController: UICollectionViewController {
     
     private let reuseIdentifier = "Cell"
     private var posts: [Post] = []
+    var post: Post?
     
     // MARK: - Lifecycle
     
@@ -29,6 +30,10 @@ class FeedViewController: UICollectionViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         navigationItem.title = "Feed"
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = refresher
     }
     
     @objc private func handleLogout() {
@@ -44,11 +49,18 @@ class FeedViewController: UICollectionViewController {
         }
     }
     
+    @objc private func handleRefresh() {
+        posts.removeAll()
+        fetchPosts()
+    }
     
     // MARK: - API
     private func fetchPosts() {
+        guard post == nil else { return }
+        
         PostService.fetchPosts { posts in
             self.posts = posts
+            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
     }
@@ -57,20 +69,26 @@ class FeedViewController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource
 extension FeedViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count > 0 ? posts.count : 1
+        if post != nil {
+            return 1
+        } else {
+            return posts.count > 0 ? posts.count : 1
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch posts.count {
-        case 0:
+        if posts.count == 0 && post == nil {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyStateCell.identifier, for: indexPath) as? EmptyStateCell else { return UICollectionViewCell() }
             return cell
-            
-        default:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FeedCell else { return UICollectionViewCell() }
-            cell.viewModel = PostViewModel(post: posts[indexPath.row])
-            return cell
         }
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FeedCell else { return UICollectionViewCell() }
+        if let post = post {
+            cell.viewModel = PostViewModel(post: post)
+        } else {
+            cell.viewModel = PostViewModel(post: posts[indexPath.row])
+        }
+        return cell
     }
 }
 

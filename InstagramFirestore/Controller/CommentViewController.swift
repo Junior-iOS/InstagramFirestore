@@ -9,15 +9,42 @@ import UIKit
 
 class CommentViewController: UICollectionViewController {
     
+    private lazy var commentInputView: CommentInputAccessoryView = {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let commentView = CommentInputAccessoryView(frame: frame)
+        return commentView
+    }()
+    
+    override var inputAccessoryView: UIView? {
+        get {
+            return commentInputView
+        }
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     private func setupCollectionView() {
         navigationItem.title = "Comments"
         collectionView.register(CommentsCell.self, forCellWithReuseIdentifier: CommentsCell.identifier)
         collectionView.backgroundColor = .white
+        collectionView.reloadData()
     }
 
 }

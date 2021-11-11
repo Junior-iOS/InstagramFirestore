@@ -42,9 +42,11 @@ class CommentViewController: UICollectionViewController {
     
     private func setupCollectionView() {
         navigationItem.title = "Comments"
+        
         collectionView.register(CommentsCell.self, forCellWithReuseIdentifier: CommentsCell.identifier)
         collectionView.backgroundColor = .white
-        collectionView.reloadData()
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
     }
 
 }
@@ -52,7 +54,7 @@ class CommentViewController: UICollectionViewController {
 // MARK: UICollectionViewDataSource / UICollectionViewDelegate
 extension CommentViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

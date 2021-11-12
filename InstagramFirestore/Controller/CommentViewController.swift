@@ -77,6 +77,14 @@ class CommentViewController: UICollectionViewController {
 
 // MARK: UICollectionViewDataSource / UICollectionViewDelegate
 extension CommentViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let uid = comments[indexPath.row].uid
+        UserService.fetchCurrentUser(withUid: uid) { user in
+            let controller = ProfileViewController(user: user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return comments.count
     }

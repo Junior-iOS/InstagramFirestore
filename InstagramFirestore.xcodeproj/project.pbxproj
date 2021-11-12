@@ -27,6 +27,7 @@
 		146F4776270AB8990053B071 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 146F4775270AB8990053B071 /* GoogleService-Info.plist */; };
 		148297E5271E9AF400E7EC96 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148297E4271E9AF400E7EC96 /* UserService.swift */; };
 		148297E7271E9B2900E7EC96 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148297E6271E9B2900E7EC96 /* Constants.swift */; };
+		1486ED87273F19D000BC43A0 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1486ED86273F19D000BC43A0 /* CommentViewModel.swift */; };
 		148AD13B272FA97200B3CCEC /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AD13A272FA97200B3CCEC /* CommentInputAccessoryView.swift */; };
 		14960392272CCFE900E45CFA /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14960391272CCFE900E45CFA /* UploadPostViewController.swift */; };
 		14960394272D18D100E45CFA /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14960393272D18D100E45CFA /* InputTextView.swift */; };
@@ -74,6 +75,7 @@
 		146F4775270AB8990053B071 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		148297E4271E9AF400E7EC96 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		148297E6271E9B2900E7EC96 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1486ED86273F19D000BC43A0 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		148AD13A272FA97200B3CCEC /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
 		14960391272CCFE900E45CFA /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
 		14960393272D18D100E45CFA /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				14BBB50A272B528B003F3EC2 /* UserCellViewModel.swift */,
 				14BBB50C272B61BC003F3EC2 /* ProfileViewModel.swift */,
 				14960399272F602200E45CFA /* PostViewModel.swift */,
+				1486ED86273F19D000BC43A0 /* CommentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				1496039A272F602200E45CFA /* PostViewModel.swift in Sources */,
 				1496039E272F988900E45CFA /* CommentViewController.swift in Sources */,
 				14960392272CCFE900E45CFA /* UploadPostViewController.swift in Sources */,
+				1486ED87273F19D000BC43A0 /* CommentViewModel.swift in Sources */,
 				146F4770270A4FB80053B071 /* CustomTextField.swift in Sources */,
 				143E8F542710ACB200909380 /* ProfileHeader.swift in Sources */,
 				146F476C270A44C00053B071 /* LoginViewController.swift in Sources */,

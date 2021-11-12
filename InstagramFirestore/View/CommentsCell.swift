@@ -13,6 +13,12 @@ class CommentsCell: UICollectionViewCell {
     static let identifier = "CommentsCell"
     private let kProfileImageSize: CGFloat = 40.0
     
+    var viewModel: CommentViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     private let profileImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -21,13 +27,7 @@ class CommentsCell: UICollectionViewCell {
         return image
     }()
     
-    private let commentLabel: UILabel = {
-        let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: "joker ", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedString.append(NSAttributedString(string: "Some comment here", attributes: [.font: UIFont.systemFont(ofSize: 14)]))
-        label.attributedText = attributedString
-        return label
-    }()
+    private let commentLabel = UILabel()
     
     // MARK: - Lifecycle
     override init(frame: CGRect) {
@@ -40,10 +40,19 @@ class CommentsCell: UICollectionViewCell {
         
         addSubview(commentLabel)
         commentLabel.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
+        commentLabel.anchor(right: rightAnchor, paddingRight: 8)
+        commentLabel.numberOfLines = 0
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Helpers
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        commentLabel.attributedText = viewModel.commentLabelText()
     }
     
 }

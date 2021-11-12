@@ -73,7 +73,6 @@ class CommentViewController: UICollectionViewController {
             self.collectionView.reloadData()
         }
     }
-    
 }
 
 // MARK: UICollectionViewDataSource / UICollectionViewDelegate
@@ -84,7 +83,7 @@ extension CommentViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentsCell.identifier, for: indexPath) as? CommentsCell else { return UICollectionViewCell() }
-        
+        cell.viewModel = CommentViewModel(comment: comments[indexPath.row])
         return cell
     }
 }
@@ -92,19 +91,25 @@ extension CommentViewController {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension CommentViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        let viewModel = CommentViewModel(comment: comments[indexPath.row])
+        let height = viewModel.size(forWidth: view.frame.width).height + 32
+        return CGSize(width: view.frame.width, height: height)
     }
 }
 
 // MARK: - CommentInputAccessoryViewDelegate
 extension CommentViewController: CommentInputAccessoryViewDelegate {
     func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String) {
-        guard let tab = self.tabBarController as? MainTabController, let user = tab.user else { return }
-        self.showLoader(true)
-        
-        CommentService.uploadComment(comment: comment, postID: post.postId, user: user) { error in
-            self.showLoader(false)
-            inputView.clearCommentText()
+        if comment.isEmpty {
+            AlertController.showAlert(message: "You need to comment something before trying to post it.", viewController: self)
+        } else {
+            guard let tab = self.tabBarController as? MainTabController, let user = tab.user else { return }
+            self.showLoader(true)
+            
+            CommentService.uploadComment(comment: comment, postID: post.postId, user: user) { error in
+                self.showLoader(false)
+                inputView.clearCommentText()
+            }
         }
     }
 }

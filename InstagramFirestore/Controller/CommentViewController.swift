@@ -9,9 +9,12 @@ import UIKit
 
 class CommentViewController: UICollectionViewController {
     
+    private var post: Post
+    
     private lazy var commentInputView: CommentInputAccessoryView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let commentView = CommentInputAccessoryView(frame: frame)
+        commentView.delegate = self
         return commentView
     }()
     
@@ -28,6 +31,15 @@ class CommentViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    init(post: Post) {
+        self.post = post
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -48,7 +60,7 @@ class CommentViewController: UICollectionViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.keyboardDismissMode = .interactive
     }
-
+    
 }
 
 // MARK: UICollectionViewDataSource / UICollectionViewDelegate
@@ -59,7 +71,7 @@ extension CommentViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentsCell.identifier, for: indexPath) as? CommentsCell else { return UICollectionViewCell() }
-                
+        
         return cell
     }
 }
@@ -68,5 +80,18 @@ extension CommentViewController {
 extension CommentViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 80)
+    }
+}
+
+// MARK: - CommentInputAccessoryViewDelegate
+extension CommentViewController: CommentInputAccessoryViewDelegate {
+    func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String) {
+        guard let tab = self.tabBarController as? MainTabController, let user = tab.user else { return }
+        self.showLoader(true)
+        
+        CommentService.uploadComment(comment: comment, postID: post.postId, user: user) { error in
+            self.showLoader(false)
+            inputView.clearCommentText()
+        }
     }
 }

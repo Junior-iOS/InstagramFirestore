@@ -8,9 +8,15 @@
 import Foundation
 import UIKit
 
+protocol CommentInputAccessoryViewDelegate: AnyObject {
+    func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String)
+}
+
 class CommentInputAccessoryView: UIView {
     
     // MARK: - Properties
+    weak var delegate: CommentInputAccessoryViewDelegate?
+    
     private let commentTextView: InputTextView = {
         let textView = InputTextView()
         textView.placeholderText = "Enter comment..."
@@ -59,7 +65,12 @@ class CommentInputAccessoryView: UIView {
     
     // MARK: - Helpers
     @objc private func handlePostTapped() {
-        print("handlePostTapped")
+        delegate?.inputView(self, wantsToUploadComment: commentTextView.text)
+    }
+    
+    func clearCommentText() {
+        commentTextView.text = ""
+        commentTextView.placeholderLabel.isHidden = false
     }
     
 }

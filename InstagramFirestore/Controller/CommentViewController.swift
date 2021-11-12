@@ -73,7 +73,6 @@ class CommentViewController: UICollectionViewController {
             self.collectionView.reloadData()
         }
     }
-    
 }
 
 // MARK: UICollectionViewDataSource / UICollectionViewDelegate

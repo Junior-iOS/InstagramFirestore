@@ -11,6 +11,7 @@
 		143E8F522710ACA300909380 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E8F512710ACA300909380 /* ProfileCell.swift */; };
 		143E8F542710ACB200909380 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E8F532710ACB200909380 /* ProfileHeader.swift */; };
 		144272B4273DC9700054326E /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144272B3273DC9700054326E /* CommentService.swift */; };
+		144272B6273DF4930054326E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144272B5273DF4930054326E /* Comment.swift */; };
 		146F475D270A1F510053B071 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F475C270A1F510053B071 /* FeedViewController.swift */; };
 		146F475F270A1F610053B071 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F475E270A1F610053B071 /* SearchViewController.swift */; };
 		146F4761270A1F6E0053B071 /* ImageSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F4760270A1F6E0053B071 /* ImageSelectorViewController.swift */; };
@@ -57,6 +58,7 @@
 		143E8F512710ACA300909380 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		143E8F532710ACB200909380 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		144272B3273DC9700054326E /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		144272B5273DF4930054326E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		146F475C270A1F510053B071 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		146F475E270A1F610053B071 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		146F4760270A1F6E0053B071 /* ImageSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				140671A72728B0F40059D83E /* User.swift */,
 				14960397272F5D5400E45CFA /* Post.swift */,
+				144272B5273DF4930054326E /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				148297E5271E9AF400E7EC96 /* UserService.swift in Sources */,
 				143E8F522710ACA300909380 /* ProfileCell.swift in Sources */,
 				146F4769270A37B00053B071 /* Extensions.swift in Sources */,
+				144272B6273DF4930054326E /* Comment.swift in Sources */,
 				146F4763270A1F7A0053B071 /* NotificationViewController.swift in Sources */,
 				1496039C272F656D00E45CFA /* EmptyStateCell.swift in Sources */,
 			);

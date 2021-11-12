@@ -9,7 +9,9 @@ import UIKit
 
 class CommentViewController: UICollectionViewController {
     
+    // MARK: - Properties
     private var post: Post
+    private var comments = [Comment]()
     
     private lazy var commentInputView: CommentInputAccessoryView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
@@ -28,6 +30,7 @@ class CommentViewController: UICollectionViewController {
         return true
     }
     
+    // MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
@@ -45,6 +48,7 @@ class CommentViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        fetchComments()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,6 +56,7 @@ class CommentViewController: UICollectionViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    // MARK: - Helpers
     private func setupCollectionView() {
         navigationItem.title = "Comments"
         
@@ -61,12 +66,20 @@ class CommentViewController: UICollectionViewController {
         collectionView.keyboardDismissMode = .interactive
     }
     
+    // MARK: - API
+    private func fetchComments() {
+        CommentService.fetchComments(forPost: post.postId) { comments in
+            self.comments = comments
+            self.collectionView.reloadData()
+        }
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource / UICollectionViewDelegate
 extension CommentViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return comments.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

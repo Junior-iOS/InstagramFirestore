@@ -115,9 +115,17 @@ extension FeedViewController: FeedCellDelegate {
         cell.viewModel?.post.didLike.toggle()
         
         if post.didLike {
-            print("Unlike here")
+            cell.likeButton.setImage(UIImage(named: "like_unselected"), for: .normal)
+            cell.likeButton.tintColor = .red
         } else {
-            print("Like here")
+            PostService.likePosts(post: post) { error in
+                if let error = error {
+                    AlertController.showAlert(message: error.localizedDescription, viewController: self)
+                } else {
+                    cell.likeButton.setImage(UIImage(named: "like_selected"), for: .normal)
+                    cell.likeButton.tintColor = .red
+                }
+            }
         }
     }
 }

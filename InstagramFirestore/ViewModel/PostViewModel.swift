@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct PostViewModel {
     var post: Post
@@ -21,6 +22,13 @@ struct PostViewModel {
     var likes: Int { return post.likes }
     
     var likesLabelText: String { return post.likes != 1 ? "\(post.likes) likes" : "\(post.likes) like" }
+    
+    var likeButtonImage: UIImage? {
+        let imageName = post.didLike ? "like_selected" : "like_unselected"
+        return UIImage(named: imageName)
+    }
+    
+    var likeButtonTintColor: UIColor { return post.didLike ? .red : .white }
     
     init(post: Post) {
         self.post = post

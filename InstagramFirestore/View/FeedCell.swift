@@ -10,6 +10,7 @@ import UIKit
 protocol FeedCellDelegate: AnyObject {
     func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
     func cell(_ cell: FeedCell, didLike post: Post)
+    func cell(_ cell: FeedCell, wantsToShowProfileFor uid: String)
 }
 
 class FeedCell: UICollectionViewCell {
@@ -25,12 +26,17 @@ class FeedCell: UICollectionViewCell {
         }
     }
     
-    private let profileImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.isUserInteractionEnabled = true
         image.backgroundColor = .systemGray
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showUserProfile))
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(tap)
+        
         return image
     }()
     
@@ -38,7 +44,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showUserProfile), for: .touchUpInside)
         return button
     }()
     
@@ -52,8 +58,6 @@ class FeedCell: UICollectionViewCell {
     
     lazy var likeButton: UIButton = {
         let button = UIButton()
-//        button.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
-//        button.tintColor = .black
         button.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         return button
     }()
@@ -136,8 +140,9 @@ class FeedCell: UICollectionViewCell {
         stackView.anchor(top: postImageView.bottomAnchor, width: 120, height: 50)
     }
     
-    @objc func didTapUsername() {
-        print("didTapUsername")
+    @objc func showUserProfile() {
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(self, wantsToShowProfileFor: viewModel.post.ownerUid)
     }
     
     private func configure() {

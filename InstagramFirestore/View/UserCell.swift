@@ -22,7 +22,6 @@ class UserCell: UITableViewCell {
         image.contentMode = .scaleToFill
         image.clipsToBounds = true
         image.backgroundColor = .lightGray
-//        image.image = #imageLiteral(resourceName: "venom-7")
         return image
     }()
     

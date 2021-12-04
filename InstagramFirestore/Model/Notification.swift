@@ -8,13 +8,15 @@
 import Firebase
 
 enum NotificationType: Int {
-    case like, follow, comment
+    case like
+    case follow
+    case comment
     
     var notificationMessage: String {
         switch self {
-        case .like: return " liked your post"
-        case .follow: return " started following you"
-        case .comment: return " commented on your post"
+        case .like: return " liked your post."
+        case .follow: return " started following you."
+        case .comment: return " commented on your post."
         }
     }
 }

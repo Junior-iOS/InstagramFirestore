@@ -118,6 +118,8 @@ extension CommentViewController: CommentInputAccessoryViewDelegate {
                 self.showLoader(false)
                 inputView.clearCommentText()
             }
+            
+            NotificationService.uploadNotification(toUid: self.post.ownerUid, fromUser: user, type: .comment, post: self.post)
         }
     }
 }

@@ -115,6 +115,9 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - PROFILE HEADER DELEGATE
 extension ProfileViewController: ProfileHeaderDelegate {
     func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User) {
+        guard let tab = tabBarController as? MainTabController else { return }
+        guard let currentUser = tab.user else { return }
+        
         if user.isCurrentUser {
             print("Show Profile")
         } else if user.isFollowed {
@@ -128,6 +131,8 @@ extension ProfileViewController: ProfileHeaderDelegate {
                 self.user.isFollowed = true
                 self.user.stats = user.stats
                 self.collectionView.reloadData()
+                
+                NotificationService.uploadNotification(toUid: user.uid, fromUser: currentUser, type: .follow)
             }
         }
     }

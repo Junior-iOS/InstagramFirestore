@@ -126,6 +126,7 @@ extension FeedViewController: FeedCellDelegate {
     }
     
     func cell(_ cell: FeedCell, didLike post: Post) {
+        guard let tab = self.tabBarController as? MainTabController, let user = tab.user else { return }
         cell.viewModel?.post.didLike.toggle()
         
         if post.didLike {
@@ -147,7 +148,7 @@ extension FeedViewController: FeedCellDelegate {
                     cell.likeButton.tintColor = .red
                     cell.viewModel?.post.likes = post.likes + 1
                     
-                    NotificationService.uploadNotification(toUid: post.ownerUid, type: .like, post: post)
+                    NotificationService.uploadNotification(toUid: post.ownerUid, fromUser: user, type: .like, post: post)
                 }
             }
         }

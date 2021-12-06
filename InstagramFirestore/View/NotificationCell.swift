@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import SDWebImage
 
 class NotificationCell: UITableViewCell {
     
     static let identifier = "notificationCell"
+    var viewModel: NotificationViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     private let kImageDimension = 48.0
     private let kPadding = 12.0
     private let kPostImageSize = 40.0
@@ -25,7 +32,7 @@ class NotificationCell: UITableViewCell {
     private let infoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.text = "Venom"
+        label.numberOfLines = 0
         return label
     }()
     
@@ -34,6 +41,7 @@ class NotificationCell: UITableViewCell {
         image.contentMode = .scaleToFill
         image.clipsToBounds = true
         image.backgroundColor = .lightGray
+        image.layer.cornerRadius = 5
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handlePostTapped))
         image.isUserInteractionEnabled = true
@@ -57,6 +65,7 @@ class NotificationCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -71,9 +80,6 @@ class NotificationCell: UITableViewCell {
         profileImage.setDimensions(height: kImageDimension, width: kImageDimension)
         profileImage.layer.cornerRadius = kImageDimension / 2
         
-        addSubview(infoLabel)
-        infoLabel.centerY(inView: profileImage, leftAnchor: profileImage.rightAnchor, paddingLeft: 8)
-        
         addSubview(followButton)
         followButton.centerY(inView: self)
         followButton.anchor(right: rightAnchor, paddingRight: kPadding, width: 100, height: 32)
@@ -82,6 +88,12 @@ class NotificationCell: UITableViewCell {
         addSubview(postImage)
         postImage.centerY(inView: self)
         postImage.anchor(right: rightAnchor, paddingRight: kPadding, width: kPostImageSize, height: kPostImageSize)
+        
+        addSubview(infoLabel)
+        infoLabel.centerY(inView: profileImage, leftAnchor: profileImage.rightAnchor, paddingLeft: 8)
+        infoLabel.anchor(right: followButton.leftAnchor, paddingRight: 4)
+        
+        followButton.isHidden = true
     }
     
     @objc private func handleFollowTapped() {
@@ -90,6 +102,19 @@ class NotificationCell: UITableViewCell {
     
     @objc private func handlePostTapped() {
         print("handlePostTapped")
+    }
+    
+    private func configure() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        profileImage.sd_setImage(with: viewModel.profileImageUrl)
+        infoLabel.attributedText = viewModel.notificationMessage
+        postImage.sd_setImage(with: viewModel.postImageUrl)
+        
+        followButton.isHidden = !viewModel.shouldHidePostImage
+        postImage.isHidden = viewModel.shouldHidePostImage
     }
 
 }

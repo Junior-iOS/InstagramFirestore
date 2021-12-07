@@ -8,9 +8,17 @@
 import UIKit
 import SDWebImage
 
+protocol NotificationCellDelegate: AnyObject {
+    func cell(_ cell: NotificationCell, wantsToFollow uid: String)
+    func cell(_ cell: NotificationCell, wantsToUnfollow uid: String)
+    func cell(_ cell: NotificationCell, wantsToViewPost postId: String)
+}
+
 class NotificationCell: UITableViewCell {
     
     static let identifier = "notificationCell"
+    weak var delegate: NotificationCellDelegate?
+    
     var viewModel: NotificationViewModel? {
         didSet {
             configure()
@@ -26,6 +34,7 @@ class NotificationCell: UITableViewCell {
         image.contentMode = .scaleToFill
         image.clipsToBounds = true
         image.backgroundColor = .lightGray
+        
         return image
     }()
     
@@ -36,7 +45,7 @@ class NotificationCell: UITableViewCell {
         return label
     }()
     
-    private let postImage: UIImageView = {
+    private lazy var postImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleToFill
         image.clipsToBounds = true
@@ -50,7 +59,7 @@ class NotificationCell: UITableViewCell {
         return image
     }()
     
-    private let followButton: UIButton = {
+    private lazy var followButton: UIButton = {
         let button = UIButton()
         button.setTitle("Loading", for: .normal)
         button.layer.cornerRadius = 3
@@ -80,28 +89,32 @@ class NotificationCell: UITableViewCell {
         profileImage.setDimensions(height: kImageDimension, width: kImageDimension)
         profileImage.layer.cornerRadius = kImageDimension / 2
         
-        addSubview(followButton)
+        contentView.addSubview(followButton)
         followButton.centerY(inView: self)
         followButton.anchor(right: rightAnchor, paddingRight: kPadding, width: 100, height: 32)
         followButton.isHidden = true
         
-        addSubview(postImage)
+        contentView.addSubview(postImage)
         postImage.centerY(inView: self)
         postImage.anchor(right: rightAnchor, paddingRight: kPadding, width: kPostImageSize, height: kPostImageSize)
         
-        addSubview(infoLabel)
+        contentView.addSubview(infoLabel)
         infoLabel.centerY(inView: profileImage, leftAnchor: profileImage.rightAnchor, paddingLeft: 8)
         infoLabel.anchor(right: followButton.leftAnchor, paddingRight: 4)
-        
-        followButton.isHidden = true
     }
     
     @objc private func handleFollowTapped() {
-        print("handleFollowTapped")
+        guard let viewModel = viewModel else { return }
+        if viewModel.notification.isUserFollowed {
+            delegate?.cell(self, wantsToUnfollow: viewModel.notification.uid)
+        } else {
+            delegate?.cell(self, wantsToFollow: viewModel.notification.uid)
+        }
     }
     
     @objc private func handlePostTapped() {
-        print("handlePostTapped")
+        guard let postId = viewModel?.notification.postId else { return }
+        delegate?.cell(self, wantsToViewPost: postId)
     }
     
     private func configure() {
@@ -113,7 +126,11 @@ class NotificationCell: UITableViewCell {
         infoLabel.attributedText = viewModel.notificationMessage
         postImage.sd_setImage(with: viewModel.postImageUrl)
         
+        followButton.setTitle(viewModel.folloButtonText, for: .normal)
+        followButton.backgroundColor = viewModel.followButtonBackgroundColor
+        followButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
         followButton.isHidden = !viewModel.shouldHidePostImage
+        
         postImage.isHidden = viewModel.shouldHidePostImage
     }
 

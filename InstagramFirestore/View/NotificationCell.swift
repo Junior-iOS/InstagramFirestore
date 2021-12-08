@@ -118,9 +118,7 @@ class NotificationCell: UITableViewCell {
     }
     
     private func configure() {
-        guard let viewModel = viewModel else {
-            return
-        }
+        guard let viewModel = viewModel else { return }
         
         profileImage.sd_setImage(with: viewModel.profileImageUrl)
         infoLabel.attributedText = viewModel.notificationMessage
@@ -133,5 +131,4 @@ class NotificationCell: UITableViewCell {
         
         postImage.isHidden = viewModel.shouldHidePostImage
     }
-
 }

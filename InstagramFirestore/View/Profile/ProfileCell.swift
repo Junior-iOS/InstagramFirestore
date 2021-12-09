@@ -12,7 +12,6 @@ class ProfileCell: UICollectionViewCell {
     // MARK: - Properties
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "venom-7")
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         return imageView

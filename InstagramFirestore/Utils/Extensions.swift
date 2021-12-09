@@ -137,3 +137,13 @@ extension UIView {
                bottom: view.bottomAnchor, right: view.rightAnchor)
     }
 }
+
+extension UIImage {
+    static func appImage(_ name: ImagesEnum) -> UIImage {
+        return UIImage(named: name.rawValue) ?? UIImage()
+    }
+    
+    static func appImage(_ name: ImagesEnum, bundle: Bundle) -> UIImage {
+        return UIImage(named: name.rawValue, in: bundle, compatibleWith: nil) ?? UIImage()
+    }
+}

@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     weak var delegate: AuthenticationDelegate?
     
     private let iconImage: UIImageView = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
+        let image = UIImageView(image: #imageLiteral(resourceName: "instagram_logo_white"))
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -46,6 +46,7 @@ class LoginViewController: UIViewController {
     private let forgotPasswordButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Forgot your password?", secondPart: "Get help signing in.")
+        button.addTarget(self, action: #selector(handleResetPassword), for: .touchUpInside)
         return button
     }()
     
@@ -121,10 +122,13 @@ class LoginViewController: UIViewController {
         } else {
             viewModel.password = sender.text
         }
-        
         updateForm()
     }
     
+    @objc func handleResetPassword() {
+        let controller = ResetPasswordViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 // MARK: - FormViewModel

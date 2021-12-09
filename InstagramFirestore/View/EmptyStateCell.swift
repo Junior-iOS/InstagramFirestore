@@ -22,7 +22,7 @@ class EmptyStateCell: UICollectionViewCell {
     
     private let emptyStateImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "emptyState")
+        image.image = .appImage(.emptyState)
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.borderWidth = 1

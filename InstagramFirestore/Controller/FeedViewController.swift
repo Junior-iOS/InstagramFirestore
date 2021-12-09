@@ -134,7 +134,7 @@ extension FeedViewController: FeedCellDelegate {
                 if let error = error {
                     AlertController.showAlert(message: error.localizedDescription, viewController: self)
                 } else {
-                    cell.likeButton.setImage(UIImage(named: "like_unselected"), for: .normal)
+                    cell.likeButton.setImage(.appImage(.like_unselected), for: .normal)
                     cell.likeButton.tintColor = .white
                     cell.viewModel?.post.likes = post.likes - 1
                 }
@@ -144,7 +144,7 @@ extension FeedViewController: FeedCellDelegate {
                 if let error = error {
                     AlertController.showAlert(message: error.localizedDescription, viewController: self)
                 } else {
-                    cell.likeButton.setImage(UIImage(named: "like_selected"), for: .normal)
+                    cell.likeButton.setImage(.appImage(.like_selected), for: .normal)
                     cell.likeButton.tintColor = .red
                     cell.viewModel?.post.likes = post.likes + 1
                     

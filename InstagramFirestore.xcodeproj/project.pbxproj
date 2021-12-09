@@ -54,6 +54,9 @@
 		14C9D97F270A1C510056B91B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14C9D97E270A1C510056B91B /* Assets.xcassets */; };
 		14C9D982270A1C510056B91B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14C9D980270A1C510056B91B /* LaunchScreen.storyboard */; };
 		14C9D991270A1D650056B91B /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C9D990270A1D650056B91B /* MainTabController.swift */; };
+		14EED2EB276247FF00D24DFA /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EED2EA276247FF00D24DFA /* ResetPasswordViewController.swift */; };
+		14EED2ED2762550C00D24DFA /* ResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EED2EC2762550C00D24DFA /* ResetViewModel.swift */; };
+		14EED2EF2762864800D24DFA /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EED2EE2762864800D24DFA /* Enum.swift */; };
 		6A1C90750F108EA20CA69E9A /* Pods_InstagramFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3919812D43DC1A1DA9134B /* Pods_InstagramFirestore.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +111,9 @@
 		14C9D981270A1C510056B91B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14C9D983270A1C510056B91B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14C9D990270A1D650056B91B /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		14EED2EA276247FF00D24DFA /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		14EED2EC2762550C00D24DFA /* ResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewModel.swift; sourceTree = "<group>"; };
+		14EED2EE2762864800D24DFA /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		6F3919812D43DC1A1DA9134B /* Pods_InstagramFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C9A02A878C5F2D55E0F8712 /* Pods-InstagramFirestore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramFirestore.debug.xcconfig"; path = "Target Support Files/Pods-InstagramFirestore/Pods-InstagramFirestore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +161,7 @@
 			children = (
 				146F476B270A44C00053B071 /* LoginViewController.swift */,
 				146F476D270A44D70053B071 /* RegistrationViewController.swift */,
+				14EED2EA276247FF00D24DFA /* ResetPasswordViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -203,6 +210,7 @@
 				148297E6271E9B2900E7EC96 /* Constants.swift */,
 				14BBB505272A71E8003F3EC2 /* AlertController.swift */,
 				14960393272D18D100E45CFA /* InputTextView.swift */,
+				14EED2EE2762864800D24DFA /* Enum.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 				14960399272F602200E45CFA /* PostViewModel.swift */,
 				1486ED86273F19D000BC43A0 /* CommentViewModel.swift */,
 				14404599275B2E5E00F2CD41 /* NotificationViewModel.swift */,
+				14EED2EC2762550C00D24DFA /* ResetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -404,9 +413,12 @@
 				1496039A272F602200E45CFA /* PostViewModel.swift in Sources */,
 				1496039E272F988900E45CFA /* CommentViewController.swift in Sources */,
 				14960392272CCFE900E45CFA /* UploadPostViewController.swift in Sources */,
+				14EED2EB276247FF00D24DFA /* ResetPasswordViewController.swift in Sources */,
+				14EED2ED2762550C00D24DFA /* ResetViewModel.swift in Sources */,
 				1486ED87273F19D000BC43A0 /* CommentViewModel.swift in Sources */,
 				146F4770270A4FB80053B071 /* CustomTextField.swift in Sources */,
 				143E8F542710ACB200909380 /* ProfileHeader.swift in Sources */,
+				14EED2EF2762864800D24DFA /* Enum.swift in Sources */,
 				146F476C270A44C00053B071 /* LoginViewController.swift in Sources */,
 				149603A0272F99E500E45CFA /* CommentsCell.swift in Sources */,
 				14404594275A810E00F2CD41 /* NotificationCell.swift in Sources */,

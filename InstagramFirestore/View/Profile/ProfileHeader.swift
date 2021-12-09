@@ -27,7 +27,6 @@ class ProfileHeader: UICollectionReusableView {
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "venom-7")
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         return imageView
@@ -81,20 +80,20 @@ class ProfileHeader: UICollectionReusableView {
     
     private let gridButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "grid"), for: .normal)
+        button.setImage(.appImage(.grid), for: .normal)
         return button
     }()
     
     private let listButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "list"), for: .normal)
+        button.setImage(.appImage(.list), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.2)
         return button
     }()
     
     private let bookmarkButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "ribbon"), for: .normal)
+        button.setImage(.appImage(.ribbon), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.2)
         return button
     }()

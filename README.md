@@ -35,7 +35,7 @@ $ pod install
 
 
 ### Ambiente de desenvolvimento
-Estas são as versões das ferramentas que foram usadas para desenvolver ** ContextMenuCollectionView **:
+Estas são as versões das ferramentas que foram usadas para desenvolver ** InstagramFirestore **:
 - **Xcode** 13.0
 - **Swift** 5.5
 - **iOS** 15.1.1

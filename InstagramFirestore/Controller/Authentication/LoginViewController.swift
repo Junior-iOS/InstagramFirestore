@@ -146,6 +146,6 @@ extension LoginViewController: FormViewModel {
 extension LoginViewController: ResetPasswordDelegate {
     func controllerDidSendResetPasswordLink(_ controller: ResetPasswordViewController) {
         navigationController?.popViewController(animated: true)
-        AlertController.showAlert(title: "Success", message: "We`ve sent a link to your email to reset your password.", viewController: self)
+        AlertController.showAlert(title: "Success", message: "We've sent a link to your email to reset your password.", viewController: self)
     }
 }

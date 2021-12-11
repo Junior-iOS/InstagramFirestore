@@ -127,6 +127,7 @@ class LoginViewController: UIViewController {
     
     @objc func handleResetPassword() {
         let controller = ResetPasswordViewController()
+        controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -137,5 +138,13 @@ extension LoginViewController: FormViewModel {
         loginButton.backgroundColor = viewModel.buttonBackgroundColor
         loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
         loginButton.isEnabled = viewModel.formIsValid
+    }
+}
+
+// MARK: - ResetPasswordDelegate
+extension LoginViewController: ResetPasswordDelegate {
+    func controllerDidSendResetPasswordLink(_ controller: ResetPasswordViewController) {
+        navigationController?.popViewController(animated: true)
+        AlertController.showAlert(title: "Success", message: "We`ve sent a link to your email to reset your password.", viewController: self)
     }
 }

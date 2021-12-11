@@ -60,7 +60,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1268AF13FCC0ED0647675CFE /* Pods-InstagramFirestore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramFirestore.release.xcconfig"; path = "Target Support Files/Pods-InstagramFirestore/Pods-InstagramFirestore.release.xcconfig"; sourceTree = "<group>"; };
 		140671A72728B0F40059D83E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		143E8F512710ACA300909380 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		143E8F532710ACB200909380 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
@@ -113,7 +112,6 @@
 		14EED2EA276247FF00D24DFA /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		14EED2EE2762864800D24DFA /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		6F3919812D43DC1A1DA9134B /* Pods_InstagramFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C9A02A878C5F2D55E0F8712 /* Pods-InstagramFirestore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramFirestore.debug.xcconfig"; path = "Target Support Files/Pods-InstagramFirestore/Pods-InstagramFirestore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +167,6 @@
 			children = (
 				14C9D974270A1C4E0056B91B /* InstagramFirestore */,
 				14C9D973270A1C4E0056B91B /* Products */,
-				A905E8F9DC0C32DAEEB84C47 /* Pods */,
 				0F3B12002D1929A2522F4554 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -281,15 +278,6 @@
 				14404595275AB24900F2CD41 /* Notification.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		A905E8F9DC0C32DAEEB84C47 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8C9A02A878C5F2D55E0F8712 /* Pods-InstagramFirestore.debug.xcconfig */,
-				1268AF13FCC0ED0647675CFE /* Pods-InstagramFirestore.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -595,7 +583,6 @@
 		};
 		14C9D987270A1C510056B91B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C9A02A878C5F2D55E0F8712 /* Pods-InstagramFirestore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -616,7 +603,6 @@
 		};
 		14C9D988270A1C510056B91B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1268AF13FCC0ED0647675CFE /* Pods-InstagramFirestore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

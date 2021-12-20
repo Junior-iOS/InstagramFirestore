@@ -11,6 +11,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - Properties
     private let tableView = UITableView()
+    private let kRowHeight: CGFloat = 64
     private var users = [User]()
     private var filteredUsers = [User]()
     private var posts = [Post]()
@@ -52,7 +53,7 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.identifier)
-        tableView.rowHeight = 64
+        tableView.rowHeight = kRowHeight
         
         view.addSubview(tableView)
         tableView.fillSuperview()

@@ -523,8 +523,8 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
-  - JGProgressHUD (~> 2.0.3)
-  - SDWebImage (~> 4.4.2)
+  - JGProgressHUD
+  - SDWebImage
   - YPImagePicker
 
 SPEC REPOS:
@@ -586,6 +586,6 @@ SPEC CHECKSUMS:
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   YPImagePicker: 1463a19a36244e209dcb03c30e63559c5afa9602
 
-PODFILE CHECKSUM: eab46d0b4c656a459edabdb5f76d33044e20feab
+PODFILE CHECKSUM: 3e57f4555a418b818b668bf027443ff75de6435e
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.12.1
